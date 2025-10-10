@@ -23,13 +23,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        success {
-            echo 'Build and tests succeeded!'
-        }
-        failure {
-            echo 'Something went wrong.'
-        }
-    }
 }
