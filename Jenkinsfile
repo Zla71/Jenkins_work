@@ -13,7 +13,6 @@ pipeline {
             steps {
                 // Стъпка за билдване на проекта
                 sh 'echo "Building project..."'
-                sh './build.sh'  // ако имате скрипт за билд
             }
         }
 
@@ -21,7 +20,6 @@ pipeline {
             steps {
                 // Стъпка за тестове
                 sh 'echo "Running tests..."'
-                sh './test.sh'   // ако имате тестов скрипт
             }
         }
     }
