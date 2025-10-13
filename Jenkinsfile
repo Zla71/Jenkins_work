@@ -2,7 +2,7 @@ def returnGivenDayDate(String day) {
     if (day.contains("[")) {
         day = replace("[", "").replace("]", "").replace("\"", "") 
     }
-    def day = java.time.LocalDate.now()
+    def today = java.time.LocalDate.now()
     def dayOfWeek = java.time.DayOfWeek.valueOf(day.toUpperCase())
     return today.with(java.time.temporal.TemporalAdjusters.next(dayOfWeek))
 }
