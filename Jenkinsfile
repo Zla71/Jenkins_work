@@ -16,12 +16,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Get date of next Saturday') {
             steps {
-                script {
-                    
+                script {               
                     def today = java.time.LocalDate.now()
-                    // def nextSaturday = today.with(java.time.temporal.TemporalAdjusters.next(java.time.DayOfWeek.SATURDAY))
                     def nextSaturday = getNextDayOfWeek('saturday')
                     echo "Next Saturday's date is: ${nextSaturday}"
                 }
