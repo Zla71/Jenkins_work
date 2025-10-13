@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
-                        echo 'checking the date of next Saturday...."
+                        echo 'checking the date of next Saturday....'
                         sleep(time: 5, unit:'SECONDS')
                         
                         def today = java.time.LocalDate.now()
