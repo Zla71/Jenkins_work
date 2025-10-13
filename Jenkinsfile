@@ -23,14 +23,12 @@ pipeline {
 
     
     stages {
-        if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
-            stage('Get date of next Saturday') {
-                steps {
-                    script {               
-                        def today = java.time.LocalDate.now()
-                        def nextSaturday = getNextDayOfWeek('saturday')
-                        echo "Next Saturday's date is: ${nextSaturday}"
-                    }
+        stage('Get date of next Saturday') {
+            steps {
+                script {               
+                    def today = java.time.LocalDate.now()
+                    def nextSaturday = getNextDayOfWeek('saturday')
+                    echo "Next Saturday's date is: ${nextSaturday}"
                 }
             }
         }
