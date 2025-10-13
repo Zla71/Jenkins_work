@@ -1,6 +1,6 @@
 def getNextDayOfWeek(String day) {
     def today = new Date()
-    def dayOfWeek = ['sunday': Calendar.SUNDAY, 'monday': Calendar.MONDAY, 'tuesday': Calendar.TUESDAY, 'wednesday': Calendar.WEDNESDAY, 'thursday': Calendar.thursday
+    def dayOfWeek = ['sunday': Calendar.SUNDAY, 'monday': Calendar.MONDAY, 'tuesday': Calendar.TUESDAY, 'wednesday': Calendar.WEDNESDAY, 'thursday': Calendar.THURSDAY,
     'friday':Calendar.FRIDAY, 'saturday':Calendar.SATURDAY][day. toLowerCase()]
 
     def cal = Calendar.getInstance()
