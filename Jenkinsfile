@@ -1,5 +1,5 @@
 def returnGivenDayDate(String day) {
-    if (day.contains("[)) {
+    if (day.contains("[")) {
         day = replace.("[", "").replace.("]", "").replace("\"", "") 
     }
     def day = java.time.LocalDate.now()
