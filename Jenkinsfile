@@ -29,6 +29,9 @@ pipeline {
             steps {
                 script {
                     if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
+                        echo 'checking the date of next Saturday...."
+                        sleep(time: 5, unit:'SECONDS')
+                        
                         def today = java.time.LocalDate.now()
                         def nextSaturday = getNextDayOfWeek('saturday')
                         echo "Next Saturday's date is: ${nextSaturday}"
@@ -43,6 +46,7 @@ pipeline {
                 script {
                     if (params.TESTING) {
                         echo 'Testing..'
+                        sleep(time: 5, unit:'SECONDS')
                     } else {
                         echo 'Skipping build as not selected'
                     }
@@ -56,6 +60,7 @@ pipeline {
                 script {
                     if (params.DEPLOY) {
                         echo 'Deploying..'
+                        sleep(time: 5, unit:'SECONDS')
                     } else {
                         echo 'Skipping build as not selected'
                     }
