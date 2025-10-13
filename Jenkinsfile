@@ -13,7 +13,9 @@ def getNextDayOfWeek(String day) {
 
 properties([
     parameters([
-        booleanParam(name: 'CHECK_DATE_OF_NEXT_SATURDAY', defaultValue: true, description: "Check the box if you want to see the date of next Saturday.")
+        booleanParam(name: 'CHECK_DATE_OF_NEXT_SATURDAY', defaultValue: true, description: "Check the box if you want to see the date of next Saturday."),
+        booleanParam(name: 'TESTING', defaultValue: true, description: "Check the box if you want to start Testing stage"),
+        booleanParam(name: 'DEPLOY', defaultValue: true, description: "Check the box if you want to start deploying stage.")
     ])
 ])
 
@@ -25,21 +27,39 @@ pipeline {
     stages {
         stage('Get date of next Saturday') {
             steps {
-                script {               
-                    def today = java.time.LocalDate.now()
-                    def nextSaturday = getNextDayOfWeek('saturday')
-                    echo "Next Saturday's date is: ${nextSaturday}"
+                script {
+                    if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
+                        def today = java.time.LocalDate.now()
+                        def nextSaturday = getNextDayOfWeek('saturday')
+                        echo "Next Saturday's date is: ${nextSaturday}"
+                    } else {
+                        echo 'Skipping build as not selected'
+                    }
                 }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                script {
+                    if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
+                        echo 'Testing..'
+                    } else {
+                        echo 'Skipping build as not selected'
+                    }
+                    
+                }
+                
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                script {
+                    if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
+                        echo 'Deploying..'
+                    } else {
+                        echo 'Skipping build as not selected'
+                    }
+                }
             }
         }
     }
