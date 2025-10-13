@@ -41,7 +41,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
+                    if (params.TESTING) {
                         echo 'Testing..'
                     } else {
                         echo 'Skipping build as not selected'
@@ -54,7 +54,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
+                    if (params.DEPLOY) {
                         echo 'Deploying..'
                     } else {
                         echo 'Skipping build as not selected'
