@@ -11,17 +11,26 @@ def getNextDayOfWeek(String day) {
     return cal.getTime().format('yyyy-MM-dd')
 }
 
+properties([
+    parameters([
+        booleanParam(name: 'CHECK_DATE_OF_NEXT_SATURDAY', defaultValue: true, description: "Check the box if you want to see the date of next Saturday.")
+    ])
+])
+
 
 pipeline {
     agent any
 
+    
     stages {
-        stage('Get date of next Saturday') {
-            steps {
-                script {               
-                    def today = java.time.LocalDate.now()
-                    def nextSaturday = getNextDayOfWeek('saturday')
-                    echo "Next Saturday's date is: ${nextSaturday}"
+        if (params.CHECK_DATE_OF_NEXT_SATURDAY) {
+            stage('Get date of next Saturday') {
+                steps {
+                    script {               
+                        def today = java.time.LocalDate.now()
+                        def nextSaturday = getNextDayOfWeek('saturday')
+                        echo "Next Saturday's date is: ${nextSaturday}"
+                    }
                 }
             }
         }
